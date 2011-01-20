@@ -12,9 +12,9 @@ import com.itextpdf.text.pdf.PdfStamper;
 
 /**
  * @author Thiago Moreira Basic class that fill up a form PDF usinf a csv file
- *         as input
+ *         as input. The file name should certificates.csv
  * 
- *         name;certificateId;hours;pdffile
+ *         name,certificateId,hours,pdffile
  */
 public class Main {
 
