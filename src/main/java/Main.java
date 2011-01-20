@@ -14,7 +14,7 @@ import com.itextpdf.text.pdf.PdfStamper;
  * @author Thiago Moreira Basic class that fill up a form PDF usinf a csv file
  *         as input
  * 
- *         name;certificateId;hours;pdffile
+ *         name,certificateId,hours,pdffile
  */
 public class Main {
 
