@@ -14,7 +14,7 @@ import com.itextpdf.text.pdf.PdfStamper;
  * @author Thiago Moreira Basic class that fill up a form PDF usinf a csv file
  *         as input. The file name should certificates.csv
  * 
- *         name,certificateId,hours,pdffile
+ *         name,certificateId,hours,issuedDate,pdffile
  */
 public class Main {
 
@@ -32,6 +32,7 @@ public class Main {
 						String name = tokenizer.nextToken();
 						String certificateId = tokenizer.nextToken();
 						String hours = tokenizer.nextToken();
+						String issuedDate = tokenizer.nextToken();
 						String pdfFile = tokenizer.nextToken();
 
 						FileOutputStream fos = new FileOutputStream(name + "-" + pdfFile);
@@ -41,6 +42,7 @@ public class Main {
 
 						form.setField("TRAINEE NAME", name);
 						form.setField("0000", certificateId);
+						form.setField("October, 28th 2010", issuedDate);
 						form.setField("24", hours);
 
 						stamper.setFormFlattening(true);
