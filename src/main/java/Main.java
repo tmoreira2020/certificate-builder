@@ -37,7 +37,7 @@ public class Main {
 								String issuedDate = tokenizer.nextToken();
 								String pdfFile = tokenizer.nextToken();
 
-								File output = new File("target", name + "-" + pdfFile);
+								File output = new File("target", certificateId + ".pdf");
 								FileOutputStream fos = new FileOutputStream(output);
 								PdfReader reader = new PdfReader(pdfFile);
 								PdfStamper stamper = new PdfStamper(reader, fos);
