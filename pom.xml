@@ -49,7 +49,9 @@
 				<configuration>
 					<mainClass>Main</mainClass>
 					<arguments>
-						<argument>certificates.csv</argument>
+						<argument>certificates-portal-admin.csv</argument>
+						<argument>certificates-developer.csv</argument>
+						<argument>certificates-system-admin.csv</argument>
 					</arguments>
 				</configuration>
 			</plugin>

@@ -22,33 +22,38 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		File input = new File(args[0]);
-		if (input.exists()) {
-			List<String> lines = IOUtils.readLines(new FileInputStream(input));
-			for (String line : lines) {
-				if (line.trim().length() != 0) {
-					StringTokenizer tokenizer = new StringTokenizer(line, ",");
-					while (tokenizer.hasMoreTokens()) {
-						String name = tokenizer.nextToken();
-						String certificateId = tokenizer.nextToken();
-						String hours = tokenizer.nextToken();
-						String issuedDate = tokenizer.nextToken();
-						String pdfFile = tokenizer.nextToken();
+		if (args != null) {
+			for (String arg : args) {
+				File input = new File(arg);
+				if (input.exists()) {
+					List<String> lines = IOUtils.readLines(new FileInputStream(input));
+					for (String line : lines) {
+						if (line.trim().length() != 0) {
+							StringTokenizer tokenizer = new StringTokenizer(line, ",");
+							while (tokenizer.hasMoreTokens()) {
+								String name = tokenizer.nextToken();
+								String certificateId = tokenizer.nextToken();
+								String hours = tokenizer.nextToken();
+								String issuedDate = tokenizer.nextToken();
+								String pdfFile = tokenizer.nextToken();
 
-						FileOutputStream fos = new FileOutputStream(name + "-" + pdfFile);
-						PdfReader reader = new PdfReader(pdfFile);
-						PdfStamper stamper = new PdfStamper(reader, fos);
-						AcroFields form = stamper.getAcroFields();
+								File output = new File("target", name + "-" + pdfFile);
+								FileOutputStream fos = new FileOutputStream(output);
+								PdfReader reader = new PdfReader(pdfFile);
+								PdfStamper stamper = new PdfStamper(reader, fos);
+								AcroFields form = stamper.getAcroFields();
 
-						form.setField("TRAINEE NAME", name);
-						form.setField("0000", certificateId);
-						form.setField("October, 28th 2010", issuedDate);
-						form.setField("24", hours);
+								form.setField("TRAINEE NAME", name);
+								form.setField("0000", certificateId);
+								form.setField("October, 28th 2010", issuedDate);
+								form.setField("24", hours);
 
-						stamper.setFormFlattening(true);
-						stamper.close();
+								stamper.setFormFlattening(true);
+								stamper.close();
 
-						fos.close();
+								fos.close();
+							}
+						}
 					}
 				}
 			}
